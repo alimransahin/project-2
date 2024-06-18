@@ -8,7 +8,6 @@ const createAcademicSemester = catchAsync(async (req, res) => {
   const result = await AcademicSemesterServices.createAcademicSemesterIntoDB(
     req.body
   );
-  console.log(result);
   sentResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
