@@ -23,6 +23,7 @@
     "express": "^4.19.2",
     "http-status": "^1.7.4",
     "joi": "^17.13.1",
+    "mongodb": "^6.7.0",
     "mongoose": "^8.4.0",
     "typescript-eslint": "^7.9.0",
     "validator": "^13.12.0",

@@ -17,13 +17,26 @@ const getSingleAcademicSemesterFromDB = async (id: string) => {
   const result = await academicSemester.findOne({ id });
   return result;
 };
-const UpdateSingleAcademicSemesterInDB = async (id: string) => {
-  const result = await academicSemester.findOne({ id });
+const UpdateSingleAcademicSemesterInDB = async (
+  id: string,
+  updatedFields: object
+) => {
+  const updateFields = { ...updatedFields };
+  const result = await academicSemester.findOneAndUpdate({ id }, updateFields, {
+    new: true,
+  });
   return result;
 };
-
+// const updateProductFromDB = async (id: string, updatedFields: object) => {
+//   const updateFields = { ...updatedFields };
+//   const updatedProduct = await Product.findOneAndUpdate({ id }, updateFields, {
+//     new: true,
+//   }).lean();
+//   return updatedProduct;
+// };
 export const AcademicSemesterServices = {
   createAcademicSemesterIntoDB,
   getAllAcademicSemesterFromDB,
   getSingleAcademicSemesterFromDB,
+  UpdateSingleAcademicSemesterInDB,
 };

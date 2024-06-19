@@ -38,9 +38,11 @@ const getSingleAcademicSemester = catchAsync(async (req, res) => {
   });
 });
 const updateSingleAcademicSemester = catchAsync(async (req, res) => {
-  const result = await AcademicSemesterServices.getSingleAcademicSemesterFromDB(
-    req.params._id
-  );
+  const result =
+    await AcademicSemesterServices.UpdateSingleAcademicSemesterInDB(
+      req.params._id,
+      req.body
+    );
   sentResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
