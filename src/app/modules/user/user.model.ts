@@ -7,6 +7,7 @@ const userSchema = new Schema<TUser>(
   {
     id: {
       type: String,
+      unique: true,
       required: true,
     },
     password: {
@@ -36,8 +37,11 @@ const userSchema = new Schema<TUser>(
   }
 );
 //pre save middleware/hook
+
 userSchema.pre("save", async function (next) {
-  const user = this;
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
+  const user = this; // doc
+  // hashing password and save into DB
   user.password = await bcrypt.hash(
     user.password,
     Number(config.bcrypt_salt_rounds)
