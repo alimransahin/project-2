@@ -1,5 +1,5 @@
 import { Student } from "./student.models";
-import { TStudent } from "./student.interface";
+// import { TStudent } from "./student.interface";
 // import { StudentModel } from "../student.models";
 
 const getAllStudentsFromDB = async () => {
