@@ -1,12 +1,12 @@
 import { studentServices } from "./student.service";
-import sentResponse from "../utils/sentResponse";
+import sendResponse from "../utils/sendResponse";
 import httpStatus from "http-status";
-import { NextFunction, Request, RequestHandler, Response } from "express";
+import { RequestHandler } from "express";
 import catchAsync from "../utils/catchAsync";
 
 const getAllStudent = catchAsync(async (req, res) => {
   const result = await studentServices.getAllStudentsFromDB();
-  sentResponse(res, {
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "Student get successfully",
@@ -17,7 +17,7 @@ const getAllStudent = catchAsync(async (req, res) => {
 const getSingleStudent = catchAsync(async (req, res) => {
   const { studentId } = req.params;
   const result = await studentServices.getSingleStudentsFromDB(studentId);
-  sentResponse(res, {
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "Single Student get successfully",
@@ -29,7 +29,7 @@ const deleteStudent: RequestHandler = catchAsync(async (req, res) => {
   const { studentId } = req.params;
   const result = await studentServices.deleteStudentsFromDB(studentId);
 
-  sentResponse(res, {
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "Student is deleted successfully",
